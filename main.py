@@ -1,16 +1,14 @@
-# This is a sample Python script.
+# 17.07.2024 Mert Kus
+# SOCRadar
+from pypdf import PdfReader, PdfWriter
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+reader = PdfReader("docs/ASD Cyber Threat Report.pdf")
+writer = PdfWriter("docs/ASD Cyber Threat Report.pdf")
 
+page = reader.pages[0]
+# create empty text file as pageNumber
+for i in range(reader.get_num_pages()):
+    file_name = f"{i+1}_asd_cyber_threat_report.txt"
+    with open(file_name, "w") as file:
+        file.write(reader.pages[i].extract_text())
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
